@@ -24,52 +24,6 @@
     <meta property="twitter:title" content="Baptiste Tellier | Portfolio d'Ingénieur">
     <meta property="twitter:description" content="Développeur fullstack et futur ingénieur spécialisé dans les technologies web modernes.">
     <meta property="twitter:image" content="https://versatech-dev.fr/fichier/ba.jpg">
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Person",
-          "name": "Baptiste Tellier",
-          "url": "https://versatech-dev.fr/portfolio.html",
-          "image": "https://versatech-dev.fr/fichier/ba.jpg",
-          "sameAs": [
-            "https://www.linkedin.com/in/baptiste-tellier-150916237/",
-            "https://versatech-dev.fr/"
-          ],
-          "jobTitle": "Software Engineering Student",
-          "worksFor": {
-            "@type": "Organization",
-            "name": "MLOG Denain"
-          },
-          "alumniOf": [
-            {
-              "@type": "CollegeOrUniversity",
-              "name": "INSA Hauts-de-France"
-            },
-            {
-              "@type": "CollegeOrUniversity",
-              "name": "UPHF, Maubeuge, France"
-            }
-          ],
-          "knowsAbout": ["Java", "Spring Boot", "PHP", "Python", "Fullstack Development", "Web Development", "Agile", "Scrum", "MVC"]
-        },
-        {
-          "@type": "WebSite",
-          "url": "https://versatech-dev.fr/portfolio.html",
-          "name": "Baptiste Tellier | Engineering Portfolio",
-          "author": {
-            "@type": "Person",
-            "name": "Baptiste Tellier"
-          },
-          "description": "Portfolio de Baptiste Tellier, étudiant ingénieur en informatique et développeur fullstack spécialisé en Java, Spring Boot, PHP et Python. Découvrez mes projets, compétences et expériences."
-        }
-      ]
-    }
-    </script>
-
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://unpkg.com/i18next/i18next.min.js"></script>
@@ -423,7 +377,7 @@
                 <!-- Placeholder for Photo -->
                 <div class="w-48 h-48 md:w-64 md:h-64 bg-gray-300 dark:bg-gray-700 rounded-full overflow-hidden shadow-xl border-4 border-accent p-1 flex items-center justify-center">
                     <!-- Replace this URL with your professional photo -->
-                    <img src="../fichier/ba.jpg"
+                    <img src="assets/ba.jpg"
                          alt="Photo de profil de Baptiste Tellier"
                          class="w-full h-full object-cover rounded-full">
                 </div>
@@ -717,7 +671,7 @@
             fallbackLng: 'en',
             debug: true,
             backend: {
-                loadPath: '../locales/{{lng}}.json',
+                loadPath: 'locales/{{lng}}.json',
             },
             detection: {
                 order: ['localStorage', 'navigator'],
