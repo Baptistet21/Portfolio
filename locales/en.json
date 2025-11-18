@@ -1,0 +1,79 @@
+{
+  "nav": {
+    "about": "About",
+    "education": "Education",
+    "experience": "Experience",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Baptiste Tellier | Engineering Portfolio",
+    "name": "Baptiste Tellier",
+    "subtitle": "Software Engineering Student",
+    "location": "59159 Marcoing, France",
+    "heading": "Fullstack Developer & <span class='text-accent'>Future Engineer</span>",
+    "description": "A 22-year-old computer science enthusiast currently pursuing an Engineering Master's Degree (Work-Study) at INSA Hauts-de-France.",
+    "contact_me": "Contact Me"
+  },
+  "education": {
+    "title": "EDUCATION",
+    "degree1_date": "2024 - Present",
+    "degree1_title": "Engineering Master's Degree (CS)",
+    "degree1_school": "INSA Hauts-de-France, Famars",
+    "degree1_desc": "Specialization: Work-Study Program",
+    "degree2_date": "2021 - 2024",
+    "degree2_title": "Bachelor of Technology (CS)",
+    "degree2_school": "UPHF, Maubeuge, France",
+    "degree2_desc": "Strong foundational knowledge in IT",
+    "degree3_date": "2020 - 2021",
+    "degree3_title": "General Baccalaureate",
+    "degree3_school": "High School Paul Duez, Cambrai, France",
+    "degree3_desc": "Science major"
+  },
+  "experience": {
+    "title": "WORK EXPERIENCE",
+    "job1_title": "Engineering Apprentice",
+    "job1_date": "Sept 2024 - Present",
+    "job1_company": "MLOG Denain",
+    "job1_desc1": "Developed internal web tools using PHP and Progress L4G (MVC architecture).",
+    "job1_desc2": "Applied Agile (Scrum) methodology for project management.",
+    "job2_title": "Python/API Developer Intern",
+    "job2_date": "Apr 2024 - Jun 2024",
+    "job2_company": "Nolej Tourcoing",
+    "job2_desc1": "Developed Python scripts for eBook data processing (using Ebooklib).",
+    "job2_desc2": "Integrated GraphQL APIs and optimized data workflows on AWS.",
+    "job3_title": "Fullstack Developer Intern",
+    "job3_date": "Mar 2024 - Jun 2024",
+    "job3_company": "Efficience Maubeuge",
+    "job3_desc1": "Designed and implemented secure web applications using Java, Spring Boot, and Spring Security."
+  },
+  "skills": {
+    "title": "KEY SKILLS",
+    "programming_title": "Programming",
+    "programming_list": "Java, C++, Python, PHP, Progress L4G",
+    "web_title": "Web & Frameworks",
+    "web_list": "HTML, CSS, JavaScript, Vue.js, React.js, Spring Boot",
+    "db_title": "Databases",
+    "db_list": "SQL, NoSQL",
+    "cloud_title": "Cloud & Deployment",
+    "cloud_list": "AWS, Application deployment",
+    "network_title": "Networking",
+    "network_list": "Cisco Packet Tracer – basic network concepts",
+    "methods_title": "Methods & Practices",
+    "methods_list": "Agile / Scrum, MVC architecture, Secure web development",
+    "soft_title": "Soft Skills",
+    "soft_list": "Team spirit • Autonomy • Organization• Versatile <br> Seriousness & Dynamism • Adaptability • Responsibility",
+    "lang_title": "Languages",
+    "lang_list": "French: Native<br>English: TOEIC 635 (March 2025)"
+  },
+  "contact": {
+    "title": "CONTACT ME",
+    "description": "I'm looking forward to discussing any potential development opportunities.",
+    "linkedin": "LinkedIn",
+    "versatech": "Versatech"
+  },
+  "footer": {
+    "copyright": "&copy; 2025 Baptiste Tellier. All rights reserved. Built with Tailwind CSS."
+  }
+}
+

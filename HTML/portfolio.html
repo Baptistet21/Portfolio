@@ -3,9 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baptiste Tellier | Engineering Portfolio</title>
+    <title data-i18n="hero.title">Baptiste Tellier | Engineering Portfolio</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Portfolio de Baptiste Tellier, étudiant ingénieur en informatique et développeur fullstack spécialisé en Java, Spring Boot, PHP et Python. Découvrez mes projets, compétences et expériences.">
+    <meta name="keywords" content="Baptiste Tellier, portfolio, ingénieur logiciel, développeur fullstack, développeur web, Java, Spring Boot, Python, PHP, INSA Hauts-de-France">
+    <meta name="author" content="Baptiste Tellier">
+    <link rel="canonical" href="https://versatech-dev.fr/portfolio.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://versatech-dev.fr/portfolio.html">
+    <meta property="og:title" content="Baptiste Tellier | Portfolio d'Ingénieur">
+    <meta property="og:description" content="Développeur fullstack et futur ingénieur spécialisé dans les technologies web modernes.">
+    <meta property="og:image" content="https://versatech-dev.fr/fichier/ba.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://versatech-dev.fr/portfolio.html">
+    <meta property="twitter:title" content="Baptiste Tellier | Portfolio d'Ingénieur">
+    <meta property="twitter:description" content="Développeur fullstack et futur ingénieur spécialisé dans les technologies web modernes.">
+    <meta property="twitter:image" content="https://versatech-dev.fr/fichier/ba.jpg">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "name": "Baptiste Tellier",
+          "url": "https://versatech-dev.fr/portfolio.html",
+          "image": "https://versatech-dev.fr/fichier/ba.jpg",
+          "sameAs": [
+            "https://www.linkedin.com/in/baptiste-tellier-150916237/",
+            "https://versatech-dev.fr/"
+          ],
+          "jobTitle": "Software Engineering Student",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "MLOG Denain"
+          },
+          "alumniOf": [
+            {
+              "@type": "CollegeOrUniversity",
+              "name": "INSA Hauts-de-France"
+            },
+            {
+              "@type": "CollegeOrUniversity",
+              "name": "UPHF, Maubeuge, France"
+            }
+          ],
+          "knowsAbout": ["Java", "Spring Boot", "PHP", "Python", "Fullstack Development", "Web Development", "Agile", "Scrum", "MVC"]
+        },
+        {
+          "@type": "WebSite",
+          "url": "https://versatech-dev.fr/portfolio.html",
+          "name": "Baptiste Tellier | Engineering Portfolio",
+          "author": {
+            "@type": "Person",
+            "name": "Baptiste Tellier"
+          },
+          "description": "Portfolio de Baptiste Tellier, étudiant ingénieur en informatique et développeur fullstack spécialisé en Java, Spring Boot, PHP et Python. Découvrez mes projets, compétences et expériences."
+        }
+      ]
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/i18next/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-http-backend/i18nextHttpBackend.min.js"></script>
+    <script src="https://unpkg.com/i18next-browser-languagedetector/i18nextBrowserLanguageDetector.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
@@ -306,11 +375,11 @@
             <div class="flex items-center space-x-4">
                 <!-- Desktop Links -->
                 <div class="hidden md:flex items-center space-x-6">
-                    <a href="#about" class="nav-link text-sm font-medium">About</a>
-                    <a href="#education" class="nav-link text-sm font-medium">Education</a>
-                    <a href="#experience" class="nav-link text-sm font-medium">Experience</a>
-                    <a href="#skills" class="nav-link text-sm font-medium">Skills</a>
-                    <a href="#contact" class="nav-link text-sm font-medium">Contact</a>
+                    <a href="#about" class="nav-link text-sm font-medium" data-i18n="nav.about">About</a>
+                    <a href="#education" class="nav-link text-sm font-medium" data-i18n="nav.education">Education</a>
+                    <a href="#experience" class="nav-link text-sm font-medium" data-i18n="nav.experience">Experience</a>
+                    <a href="#skills" class="nav-link text-sm font-medium" data-i18n="nav.skills">Skills</a>
+                    <a href="#contact" class="nav-link text-sm font-medium" data-i18n="nav.contact">Contact</a>
                 </div>
 
                 <!-- Dark Mode Toggle -->
@@ -318,6 +387,13 @@
                     <i data-lucide="sun" id="sun-icon" class="h-5 w-5 block dark:hidden"></i>
                     <i data-lucide="moon" id="moon-icon" class="h-5 w-5 hidden dark:block"></i>
                 </button>
+
+                <!-- Language Switcher -->
+                <div class="flex items-center">
+                    <button id="lang-fr" class="p-2 rounded-l-full text-text-color hover:text-accent transition duration-200 font-semibold text-sm">FR</button>
+                    <div class="w-px h-4 bg-gray-400"></div>
+                    <button id="lang-en" class="p-2 rounded-r-full text-text-color hover:text-accent transition duration-200 font-semibold text-sm">EN</button>
+                </div>
 
                 <!-- Mobile Menu Button -->
                 <button id="menu-button" type="button" class="md:hidden p-2 rounded-md text-text-color hover:bg-gray-200 dark:hover:bg-gray-700" aria-controls="mobile-menu" aria-expanded="false">
@@ -330,11 +406,11 @@
     <!-- Mobile Menu -->
     <div class="md:hidden hidden bg-primary" id="mobile-menu">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200 dark:border-gray-700">
-            <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition">About</a>
-            <a href="#education" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition">Education</a>
-            <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition">Experience</a>
-            <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition">Skills</a>
-            <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition">Contact</a>
+            <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition" data-i18n="nav.about">About</a>
+            <a href="#education" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition" data-i18n="nav.education">Education</a>
+            <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition" data-i18n="nav.experience">Experience</a>
+            <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition" data-i18n="nav.skills">Skills</a>
+            <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition" data-i18n="nav.contact">Contact</a>
         </div>
     </div>
 </nav>
@@ -348,21 +424,21 @@
                 <div class="w-48 h-48 md:w-64 md:h-64 bg-gray-300 dark:bg-gray-700 rounded-full overflow-hidden shadow-xl border-4 border-accent p-1 flex items-center justify-center">
                     <!-- Replace this URL with your professional photo -->
                     <img src="../fichier/ba.jpg"
-                         alt="Profile Picture Placeholder"
+                         alt="Photo de profil de Baptiste Tellier"
                          class="w-full h-full object-cover rounded-full">
                 </div>
-                <h2 class="text-3xl font-extrabold mt-6 text-accent">Baptiste Tellier</h2>
-                <p class="text-lg font-medium text-gray-500 dark:text-gray-400">Software Engineering Student</p>
+                <h2 class="text-3xl font-extrabold mt-6 text-accent" data-i18n="hero.name">Baptiste Tellier</h2>
+                <p class="text-lg font-medium text-gray-500 dark:text-gray-400" data-i18n="hero.subtitle">Software Engineering Student</p>
                 <p class="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
-                    <i data-lucide="map-pin" class="inline w-4 h-4 mr-1"></i> 59159 Marcoing, France
+                    <i data-lucide="map-pin" class="inline w-4 h-4 mr-1"></i> <span data-i18n="hero.location">59159 Marcoing, France</span>
                 </p>
             </div>
 
             <div class="col-span-3 md:col-span-2 space-y-6">
-                <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">
+                <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight" data-i18n="hero.heading">
                     Fullstack Developer & <span class="text-accent">Future Engineer</span>
                 </h1>
-                <p class="text-xl leading-relaxed">
+                <p class="text-xl leading-relaxed" data-i18n="hero.description">
                     A 22-year-old computer science enthusiast currently pursuing an Engineering Master's Degree (Work-Study) at INSA Hauts-de-France.
                 </p>
                 <!--                <p class="text-lg leading-relaxed">-->
@@ -371,7 +447,7 @@
 
                 <div class="pt-4 flex flex-wrap gap-4">
                     <a href="#contact" class="flex items-center text-accent border border-accent font-bold py-3 px-6 rounded-lg hover:bg-accent hover:text-white transition duration-300 shadow-md">
-                        <i data-lucide="mail" class="w-5 h-5 mr-2"></i> Contact Me
+                        <i data-lucide="mail" class="w-5 h-5 mr-2"></i> <span data-i18n="hero.contact_me">Contact Me</span>
                     </a>
                 </div>
             </div>
@@ -380,55 +456,55 @@
 
     <!-- 3. Education Section -->
     <section id="education" class="pt-20">
-        <h2 class="text-4xl font-bold text-center mb-12 text-accent">EDUCATION</h2>
+        <h2 class="text-4xl font-bold text-center mb-12 text-accent" data-i18n="education.title">EDUCATION</h2>
         <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
 
             <!-- Degree 1 -->
             <div class="card p-6 rounded-xl shadow-lg border-t-4 border-accent">
-                <p class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">2024 - Present</p>
-                <h3 class="text-2xl font-semibold mb-2 text-accent">Engineering Master's Degree (CS)</h3>
-                <p class="text-gray-700 dark:text-gray-300">INSA Hauts-de-France, Famars</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Specialization: Work-Study Program</p>
+                <p class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1" data-i18n="education.degree1_date">2024 - Present</p>
+                <h3 class="text-2xl font-semibold mb-2 text-accent" data-i18n="education.degree1_title">Engineering Master's Degree (CS)</h3>
+                <p class="text-gray-700 dark:text-gray-300" data-i18n="education.degree1_school">INSA Hauts-de-France, Famars</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-2" data-i18n="education.degree1_desc">Specialization: Work-Study Program</p>
             </div>
 
             <!-- Degree 2 -->
             <div class="card p-6 rounded-xl shadow-lg border-t-4 border-accent">
-                <p class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">2021 - 2024</p>
-                <h3 class="text-2xl font-semibold mb-2 text-accent">Bachelor of Technology (CS)</h3>
-                <p class="text-gray-700 dark:text-gray-300">UPHF, Maubeuge, France</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Strong foundational knowledge in IT</p>
+                <p class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1" data-i18n="education.degree2_date">2021 - 2024</p>
+                <h3 class="text-2xl font-semibold mb-2 text-accent" data-i18n="education.degree2_title">Bachelor of Technology (CS)</h3>
+                <p class="text-gray-700 dark:text-gray-300" data-i18n="education.degree2_school">UPHF, Maubeuge, France</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-2" datai18n="education.degree2_desc">Strong foundational knowledge in IT</p>
             </div>
 
             <!-- Degree 3 -->
             <div class="card p-6 rounded-xl shadow-lg border-t-4 border-accent">
-                <p class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">2020 - 2021</p>
-                <h3 class="text-2xl font-semibold mb-2 text-accent">General Baccalaureate</h3>
-                <p class="text-gray-700 dark:text-gray-300">High School Paul Duez, Cambrai, France</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Science major</p>
+                <p class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1" data-i18n="education.degree3_date">2020 - 2021</p>
+                <h3 class="text-2xl font-semibold mb-2 text-accent" data-i18n="education.degree3_title">General Baccalaureate</h3>
+                <p class="text-gray-700 dark:text-gray-300" data-i18n="education.degree3_school">High School Paul Duez, Cambrai, France</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-2" data-i18n="education.degree3_desc">Science major</p>
             </div>
         </div>
     </section>
 
     <!-- 4. Experience Section -->
     <section id="experience" class="pt-20">
-        <h2 class="text-4xl font-bold text-center mb-12 text-accent">WORK EXPERIENCE</h2>
+        <h2 class="text-4xl font-bold text-center mb-12 text-accent" data-i18n="experience.title">WORK EXPERIENCE</h2>
         <div class="max-w-4xl mx-auto space-y-10">
 
             <!-- Experience 1 (Apprenticeship) -->
             <div class="card p-8 rounded-xl shadow-lg border-l-8 border-accent">
                 <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-2xl font-bold text-accent">Engineering Apprentice</h3>
-                    <span class="text-sm font-semibold text-gray-500 dark:text-gray-400">Sept 2024 - Present</span>
+                    <h3 class="text-2xl font-bold text-accent" data-i18n="experience.job1_title">Engineering Apprentice</h3>
+                    <span class="text-sm font-semibold text-gray-500 dark:text-gray-400" data-i18n="experience.job1_date">Sept 2024 - Present</span>
                 </div>
-                <p class="text-lg font-medium mb-4 text-gray-700 dark:text-gray-300">MLOG Denain</p>
+                <p class="text-lg font-medium mb-4 text-gray-700 dark:text-gray-300" data-i18n="experience.job1_company">MLOG Denain</p>
                 <ul class="list-none space-y-2 text-gray-700 dark:text-gray-300">
                     <li class="flex items-start">
                         <i data-lucide="check-circle" class="w-5 h-5 text-accent flex-shrink-0 mr-2 mt-1"></i>
-                        Developed internal web tools using PHP and Progress L4G (MVC architecture).
+                        <span data-i18n="experience.job1_desc1">Developed internal web tools using PHP and Progress L4G (MVC architecture).</span>
                     </li>
                     <li class="flex items-start">
                         <i data-lucide="check-circle" class="w-5 h-5 text-accent flex-shrink-0 mr-2 mt-1"></i>
-                        Applied Agile (Scrum) methodology for project management.
+                        <span data-i18n="experience.job1_desc2">Applied Agile (Scrum) methodology for project management.</span>
                     </li>
                 </ul>
             </div>
@@ -436,18 +512,18 @@
             <!-- Experience 2 (Internship BUT 3) -->
             <div class="card p-8 rounded-xl shadow-lg border-l-8 border-accent">
                 <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-2xl font-bold text-accent">Python/API Developer Intern</h3>
-                    <span class="text-sm font-semibold text-gray-500 dark:text-gray-400">Apr 2024 - Jun 2024</span>
+                    <h3 class="text-2xl font-bold text-accent" data-i18n="experience.job2_title">Python/API Developer Intern</h3>
+                    <span class="text-sm font-semibold text-gray-500 dark:text-gray-400" data-i18n="experience.job2_date">Apr 2024 - Jun 2024</span>
                 </div>
-                <p class="text-lg font-medium mb-4 text-gray-700 dark:text-gray-300">Nolej Tourcoing</p>
+                <p class="text-lg font-medium mb-4 text-gray-700 dark:text-gray-300" data-i18n="experience.job2_company">Nolej Tourcoing</p>
                 <ul class="list-none space-y-2 text-gray-700 dark:text-gray-300">
                     <li class="flex items-start">
                         <i data-lucide="check-circle" class="w-5 h-5 text-accent flex-shrink-0 mr-2 mt-1"></i>
-                        Developed Python scripts for eBook data processing (using Ebooklib).
+                        <span data-i18n="experience.job2_desc1">Developed Python scripts for eBook data processing (using Ebooklib).</span>
                     </li>
                     <li class="flex items-start">
                         <i data-lucide="check-circle" class="w-5 h-5 text-accent flex-shrink-0 mr-2 mt-1"></i>
-                        Integrated GraphQL APIs and optimized data workflows on AWS.
+                        <span data-i18n="experience.job2_desc2">Integrated GraphQL APIs and optimized data workflows on AWS.</span>
                     </li>
                 </ul>
             </div>
@@ -455,14 +531,14 @@
             <!-- Experience 3 (Internship BUT 3) -->
             <div class="card p-8 rounded-xl shadow-lg border-l-8 border-accent">
                 <div class="flex justify-between items-start mb-2">
-                    <h3 class="text-2xl font-bold text-accent">Fullstack Developer Intern</h3>
-                    <span class="text-sm font-semibold text-gray-500 dark:text-gray-400">Mar 2024 - Jun 2024</span>
+                    <h3 class="text-2xl font-bold text-accent" data-i18n="experience.job3_title">Fullstack Developer Intern</h3>
+                    <span class="text-sm font-semibold text-gray-500 dark:text-gray-400" data-i18n="experience.job3_date">Mar 2024 - Jun 2024</span>
                 </div>
-                <p class="text-lg font-medium mb-4 text-gray-700 dark:text-gray-300">Efficience Maubeuge</p>
+                <p class="text-lg font-medium mb-4 text-gray-700 dark:text-gray-300" data-i18n="experience.job3_company">Efficience Maubeuge</p>
                 <ul class="list-none space-y-2 text-gray-700 dark:text-gray-300">
                     <li class="flex items-start">
                         <i data-lucide="check-circle" class="w-5 h-5 text-accent flex-shrink-0 mr-2 mt-1"></i>
-                        Designed and implemented secure web applications using Java, Spring Boot, and Spring Security.
+                        <span data-i18n="experience.job3_desc1">Designed and implemented secure web applications using Java, Spring Boot, and Spring Security.</span>
                     </li>
                 </ul>
             </div>
@@ -472,7 +548,7 @@
 
     <!-- 5. Skills Section -->
     <section id="skills" class="pt-20">
-        <h2 class="text-4xl font-bold text-center mb-12 text-accent">KEY SKILLS</h2>
+        <h2 class="text-4xl font-bold text-center mb-12 text-accent" data-i18n="skills.title">KEY SKILLS</h2>
 
         <div class="max-w-6xl mx-auto bg-primary p-10 rounded-xl shadow-2xl space-y-10">
 
@@ -483,8 +559,8 @@
                     <!-- Programming Languages -->
                     <div class="p-4 rounded-lg bg-secondary dark:bg-gray-800 transition transform hover:scale-[1.05]">
                         <i data-lucide="code-2" class="w-8 h-8 mx-auto mb-2 text-accent"></i>
-                        <h4 class="font-bold text-lg mb-1">Programming</h4>
-                        <p class="text-sm font-medium text-gray-700 dark:text-gray-400">
+                        <h4 class="font-bold text-lg mb-1" data-i18n="skills.programming_title">Programming</h4>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-400" data-i18n="skills.programming_list">
                             Java, C++, Python, PHP, Progress L4G
                         </p>
                     </div>
@@ -492,8 +568,8 @@
                     <!-- Web & Frameworks -->
                     <div class="p-4 rounded-lg bg-secondary dark:bg-gray-800 transition transform hover:scale-[1.05]">
                         <i data-lucide="layout-template" class="w-8 h-8 mx-auto mb-2 text-accent"></i>
-                        <h4 class="font-bold text-lg mb-1">Web & Frameworks</h4>
-                        <p class="text-sm font-medium text-gray-700 dark:text-gray-400">
+                        <h4 class="font-bold text-lg mb-1" data-i18n="skills.web_title">Web & Frameworks</h4>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-400" data-i18n="skills.web_list">
                             HTML, CSS, JavaScript, Vue.js, React.js, Spring Boot
                         </p>
                     </div>
@@ -501,8 +577,8 @@
                     <!-- Databases -->
                     <div class="p-4 rounded-lg bg-secondary dark:bg-gray-800 transition transform hover:scale-[1.05]">
                         <i data-lucide="database" class="w-8 h-8 mx-auto mb-2 text-accent"></i>
-                        <h4 class="font-bold text-lg mb-1">Databases</h4>
-                        <p class="text-sm font-medium text-gray-700 dark:text-gray-400">
+                        <h4 class="font-bold text-lg mb-1" data-i18n="skills.db_title">Databases</h4>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-400" data-i18n="skills.db_list">
                             SQL, NoSQL
                         </p>
                     </div>
@@ -510,8 +586,8 @@
                     <!-- Cloud & Deployment -->
                     <div class="p-4 rounded-lg bg-secondary dark:bg-gray-800 transition transform hover:scale-[1.05]">
                         <i data-lucide="cloud" class="w-8 h-8 mx-auto mb-2 text-accent"></i>
-                        <h4 class="font-bold text-lg mb-1">Cloud & Deployment</h4>
-                        <p class="text-sm font-medium text-gray-700 dark:text-gray-400">
+                        <h4 class="font-bold text-lg mb-1" data-i18n="skills.cloud_title">Cloud & Deployment</h4>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-400" data-i18n="skills.cloud_list">
                             AWS, Application deployment
                         </p>
                     </div>
@@ -519,8 +595,8 @@
                     <!-- Networking -->
                     <div class="p-4 rounded-lg bg-secondary dark:bg-gray-800 transition transform hover:scale-[1.05]">
                         <i data-lucide="router" class="w-8 h-8 mx-auto mb-2 text-accent"></i>
-                        <h4 class="font-bold text-lg mb-1">Networking</h4>
-                        <p class="text-sm font-medium text-gray-700 dark:text-gray-400">
+                        <h4 class="font-bold text-lg mb-1" data-i18n="skills.network_title">Networking</h4>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-400" data-i18n="skills.network_list">
                             Cisco Packet Tracer – basic network concepts
                         </p>
                     </div>
@@ -528,8 +604,8 @@
                     <!-- Methods & Practices -->
                     <div class="p-4 rounded-lg bg-secondary dark:bg-gray-800 transition transform hover:scale-[1.05]">
                         <i data-lucide="workflow" class="w-8 h-8 mx-auto mb-2 text-accent"></i>
-                        <h4 class="font-bold text-lg mb-1">Methods & Practices</h4>
-                        <p class="text-sm font-medium text-gray-700 dark:text-gray-400">
+                        <h4 class="font-bold text-lg mb-1" data-i18n="skills.methods_title">Methods & Practices</h4>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-400" data-i18n="skills.methods_list">
                             Agile / Scrum, MVC architecture, Secure web development
                         </p>
                     </div>
@@ -543,8 +619,8 @@
                 <!-- Soft Skills -->
                 <div class="p-6 rounded-lg bg-secondary dark:bg-gray-800 text-center flex flex-col justify-center">
                     <i data-lucide="users" class="w-8 h-8 mx-auto mb-2 text-accent"></i>
-                    <h3 class="font-bold text-lg mb-2">Soft Skills</h3>
-                    <p class="text-sm text-gray-700 dark:text-gray-300">
+                    <h3 class="font-bold text-lg mb-2" data-i18n="skills.soft_title">Soft Skills</h3>
+                    <p class="text-sm text-gray-700 dark:text-gray-300" data-i18n="skills.soft_list">
                         Team spirit • Autonomy • Organization• Versatile <br>
                         Seriousness & Dynamism • Adaptability • Responsibility
                     </p>
@@ -563,8 +639,8 @@
                 <!-- Languages -->
                 <div class="p-6 rounded-lg bg-secondary dark:bg-gray-800 text-center flex flex-col justify-center">
                     <i data-lucide="languages" class="w-8 h-8 mx-auto mb-2 text-accent"></i>
-                    <h3 class="font-bold text-lg mb-2">Languages</h3>
-                    <p class="text-sm text-gray-700 dark:text-gray-300">
+                    <h3 class="font-bold text-lg mb-2" data-i18n="skills.lang_title">Languages</h3>
+                    <p class="text-sm text-gray-700 dark:text-gray-300" data-i18n="skills.lang_list">
                         French: Native<br>
                         English: TOEIC 635 (March 2025)
                     </p>
@@ -578,9 +654,9 @@
 
     <!-- 6. Contact Section -->
     <section id="contact" class="pt-20">
-        <h2 class="text-4xl font-bold text-center mb-12 text-accent">CONTACT ME</h2>
+        <h2 class="text-4xl font-bold text-center mb-12 text-accent" data-i18n="contact.title">CONTACT ME</h2>
         <div class="max-w-xl mx-auto bg-primary p-8 rounded-xl shadow-2xl">
-            <p class="text-center text-lg mb-6 text-gray-700 dark:text-gray-300">
+            <p class="text-center text-lg mb-6 text-gray-700 dark:text-gray-300" data-i18n="contact.description">
                 I'm looking forward to discussing any potential development opportunities.
             </p>
             <div class="grid sm:grid-cols-2 gap-4">
@@ -594,11 +670,11 @@
                 </a>
                 <a href="https://www.linkedin.com/in/baptiste-tellier-150916237/" target="_blank" rel="noopener noreferrer" class="contact-btn">
                     <i data-lucide="linkedin" class="w-5 h-5 mr-3"></i>
-                    <span>LinkedIn</span>
+                    <span data-i18n="contact.linkedin">LinkedIn</span>
                 </a>
                 <a href="https://versatech-dev.fr/" target="_blank" rel="noopener noreferrer" class="contact-btn">
                     <i data-lucide="globe" class="w-5 h-5 mr-3"></i>
-                    <span>Versatech</span>
+                    <span data-i18n="contact.versatech">Versatech</span>
                 </a>
             </div>
         </div>
@@ -606,7 +682,7 @@
 </main>
 
 <footer class="bg-primary border-t border-gray-200 dark:border-gray-700 py-6 mt-16">
-    <div class="max-w-7xl mx-auto text-center text-gray-500 dark:text-gray-400 text-sm">
+    <div class="max-w-7xl mx-auto text-center text-gray-500 dark:text-gray-400 text-sm" data-i18n="footer.copyright">
         &copy; 2025 Baptiste Tellier. All rights reserved. Built with Tailwind CSS.
     </div>
 </footer>
@@ -621,6 +697,53 @@
     const html = document.documentElement;
     const navLinks = document.querySelectorAll('.nav-link, #mobile-menu a');
     const sections = document.querySelectorAll('section');
+    const langFrButton = document.getElementById('lang-fr');
+    const langEnButton = document.getElementById('lang-en');
+
+    // --- I18n ---
+    const updateContent = () => {
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            el.innerHTML = i18next.t(key);
+        });
+        lucide.createIcons(); // Re-render icons if they are part of the translated content
+    };
+
+    i18next
+        .use(i18nextHttpBackend)
+        .use(i18nextBrowserLanguageDetector)
+        .init({
+            fallbackLng: 'en',
+            debug: true,
+            backend: {
+                loadPath: '../locales/{{lng}}.json',
+            },
+            detection: {
+                order: ['localStorage', 'navigator'],
+                caches: ['localStorage']
+            }
+        }, (err, t) => {
+            if (err) return console.error(err);
+            document.documentElement.lang = i18next.language;
+            updateContent();
+        });
+
+    i18next.on('languageChanged', () => {
+        document.documentElement.lang = i18next.language;
+        updateContent();
+    });
+
+    langFrButton.addEventListener('click', () => {
+        i18next.changeLanguage('fr');
+    });
+
+
+
+    langEnButton.addEventListener('click', () => {
+        i18next.changeLanguage('en');
+    });
+
 
     // 1. Mobile Menu Toggle
     menuButton.addEventListener('click', function() {
@@ -717,3 +840,4 @@
 
 </body>
 </html>
+

@@ -1,0 +1,79 @@
+{
+  "nav": {
+    "about": "À propos",
+    "education": "Formation",
+    "experience": "Expériences",
+    "skills": "Compétences",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Baptiste Tellier | Portfolio d'Ingénieur",
+    "name": "Baptiste Tellier",
+    "subtitle": "Étudiant Ingénieur en Informatique",
+    "location": "59159 Marcoing, France",
+    "heading": "Développeur Fullstack & <span class='text-accent'>Futur Ingénieur</span>",
+    "description": "Passionné d'informatique de 22 ans, actuellement en Master d'Ingénieur (en alternance) à l'INSA Hauts-de-France.",
+    "contact_me": "Contactez-moi"
+  },
+  "education": {
+    "title": "FORMATION",
+    "degree1_date": "2024 - Aujourd'hui",
+    "degree1_title": "Diplôme d'Ingénieur (Informatique)",
+    "degree1_school": "INSA Hauts-de-France, Famars",
+    "degree1_desc": "Spécialisation : Programme en alternance",
+    "degree2_date": "2021 - 2024",
+    "degree2_title": "Bachelor Universitaire de Technologie (BUT)",
+    "degree2_school": "UPHF, Maubeuge, France",
+    "degree2_desc": "Solides connaissances fondamentales en informatique",
+    "degree3_date": "2020 - 2021",
+    "degree3_title": "Baccalauréat Général",
+    "degree3_school": "Lycée Paul Duez, Cambrai, France",
+    "degree3_desc": "Spécialité scientifique"
+  },
+  "experience": {
+    "title": "EXPÉRIENCES PROFESSIONNELLES",
+    "job1_title": "Apprenti Ingénieur",
+    "job1_date": "Sept 2024 - Aujourd'hui",
+    "job1_company": "MLOG Denain",
+    "job1_desc1": "Développement d'outils web internes en PHP et Progress L4G (architecture MVC).",
+    "job1_desc2": "Application de la méthodologie Agile (Scrum) pour la gestion de projet.",
+    "job2_title": "Stagiaire Développeur Python/API",
+    "job2_date": "Avr 2024 - Juin 2024",
+    "job2_company": "Nolej Tourcoing",
+    "job2_desc1": "Développement de scripts Python pour le traitement de données d'eBooks (avec Ebooklib).",
+    "job2_desc2": "Intégration d'API GraphQL et optimisation des flux de données sur AWS.",
+    "job3_title": "Stagiaire Développeur Fullstack",
+    "job3_date": "Mar 2024 - Juin 2024",
+    "job3_company": "Efficience Maubeuge",
+    "job3_desc1": "Conception et implémentation d'applications web sécurisées avec Java, Spring Boot et Spring Security."
+  },
+  "skills": {
+    "title": "COMPÉTENCES CLÉS",
+    "programming_title": "Programmation",
+    "programming_list": "Java, C++, Python, PHP, Progress L4G",
+    "web_title": "Web & Frameworks",
+    "web_list": "HTML, CSS, JavaScript, Vue.js, React.js, Spring Boot",
+    "db_title": "Bases de données",
+    "db_list": "SQL, NoSQL",
+    "cloud_title": "Cloud & Déploiement",
+    "cloud_list": "AWS, Déploiement d'applications",
+    "network_title": "Réseaux",
+    "network_list": "Cisco Packet Tracer – concepts de base des réseaux",
+    "methods_title": "Méthodes & Pratiques",
+    "methods_list": "Agile / Scrum, Architecture MVC, Développement web sécurisé",
+    "soft_title": "Compétences générales",
+    "soft_list": "Esprit d'équipe • Autonomie • Organisation • Polyvalence <br> Sérieux & Dynamisme • Adaptabilité • Responsabilité",
+    "lang_title": "Langues",
+    "lang_list": "Français : Natif<br>Anglais : TOEIC 635 (Mars 2025)"
+  },
+  "contact": {
+    "title": "CONTACTEZ-MOI",
+    "description": "Je suis impatient de discuter de toute opportunité de développement potentielle.",
+    "linkedin": "LinkedIn",
+    "versatech": "Versatech"
+  },
+  "footer": {
+    "copyright": "&copy; 2025 Baptiste Tellier. Tous droits réservés. Construit avec Tailwind CSS."
+  }
+}
+
