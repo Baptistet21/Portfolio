@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baptiste Tellier | Engineering Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+        :root {
+            /* Light Mode Variables */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f3f4f6;              /* gris très clair */
+            --text-color: #0f172a;                /* slate-900 */
+            --accent-color: #2563eb;              /* bleu Tailwind 600 */
+            --accent-soft: rgba(37, 99, 235, 0.08);
+            --card-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+            --radius-xl: 1.5rem;
+        }
+
+        .dark {
+            /* Dark Mode Variables */
+            --bg-primary: #020617;                /* slate-950 */
+            --bg-secondary: #020617;
+            --text-color: #e5e7eb;                /* gray-200 */
+            --accent-color: #4c8aef;              /* bleu plus clair pour le dark */
+            --accent-soft: rgba(76, 138, 239, 0.18);
+            --card-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
+        }
+
+        /* --- Amélioration visibilité du texte en mode clair --- */
+        body:not(.dark) p,
+        body:not(.dark) .text-gray-500,
+        body:not(.dark) .text-gray-600,
+        body:not(.dark) .text-gray-700 {
+            color: #374151 !important; /* gris plus foncé → slate-700 */
+        }
+
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background:
+                    radial-gradient(circle at top left, #e0edff 0, transparent 55%),
+                    radial-gradient(circle at bottom right, #e5fdf4 0, transparent 55%),
+                    var(--bg-secondary);
+            color: var(--text-color);
+            transition: background 0.5s ease, color 0.5s ease;
+        }
+
+        .dark body {
+            background: var(--bg-secondary);
+        }
+
+        /* Core variable-based utility classes */
+        .text-accent { color: var(--accent-color); }
+        .text-text-color { color: var(--text-color); }
+        .bg-primary { background-color: var(--bg-primary); }
+        .bg-secondary { background-color: var(--bg-secondary); }
+        .border-accent { border-color: var(--accent-color); }
+
+        /* Hover helpers pour rester cohérent avec Tailwind */
+        .hover\:text-accent:hover { color: var(--accent-color) !important; }
+        .hover\:bg-accent:hover { background-color: var(--accent-color) !important; color: #fff !important; }
+
+        /* Selection styling */
+        ::selection {
+            background-color: var(--accent-color);
+            color: #fff;
+        }
+
+        /* Cartes */
+        .card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,250,252,0.98));
+            box-shadow: var(--card-shadow);
+            border-radius: var(--radius-xl);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            transition:
+                    transform 0.3s ease,
+                    box-shadow 0.3s ease,
+                    background 0.3s ease,
+                    border-color 0.3s ease;
+        }
+
+        .dark .card {
+            background: radial-gradient(circle at top left, #020617, #020617);
+            border-color: rgba(148, 163, 184, 0.25);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 26px 60px rgba(15, 23, 42, 0.16);
+            border-color: var(--accent-soft);
+            background: linear-gradient(135deg, #ffffff, #f1f5f9);
+        }
+
+        .dark .card:hover {
+            background: radial-gradient(circle at top left, #020617, #020617);
+            border-color: var(--accent-soft);
+        }
+
+        /* Sections (espacement + léger effet de carte globale) */
+        main > section {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+            scroll-margin-top: 6rem;
+        }
+
+        /* Hero “bloc” */
+        #hero > div {
+            backdrop-filter: blur(22px);
+            border-radius: 2rem;
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            background:
+                    radial-gradient(circle at top left, rgba(37, 99, 235, 0.07), transparent 55%),
+                    radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.06), transparent 55%),
+                    var(--bg-primary);
+            box-shadow: 0 26px 70px rgba(15, 23, 42, 0.18);
+        }
+
+        .dark #hero > div {
+            background:
+                    radial-gradient(circle at top left, rgba(76, 138, 239, 0.16), transparent 55%),
+                    radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.12), transparent 55%),
+                    #020617;
+        }
+
+        /* Photo profil */
+        #hero img {
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.35);
+        }
+
+        /* Header */
+        .header-bg {
+            background-color: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .dark .header-bg {
+            background-color: rgba(15, 23, 42, 0.92);
+            border-bottom-color: rgba(30, 64, 175, 0.5);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65);
+        }
+
+        /* Nav links */
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+            font-size: 0.9rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: rgba(15, 23, 42, 0.75);
+            transition: color 0.2s ease;
+        }
+
+        .dark .nav-link {
+            color: rgba(226, 232, 240, 0.8);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, var(--accent-color), #22c55e);
+            border-radius: 999px;
+            transition: width 0.25s ease-in-out;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent-color);
+        }
+
+        /* Dark-mode-aware classes */
+        .dark .bg-primary { background-color: var(--bg-primary); }
+        .dark .bg-secondary { background-color: var(--bg-secondary); }
+        .dark .text-accent { color: var(--accent-color); }
+        .dark .text-text-color { color: var(--text-color); }
+
+        /* Boutons CTA Hero */
+        #hero a[href="#contact"],
+        #hero a[href="#experience"] {
+            box-shadow: 0 18px 40px rgba(37, 99, 235, 0.28);
+        }
+
+        #hero a[href="#experience"] {
+            background-color: rgba(255, 255, 255, 0.96);
+        }
+
+        #hero a[href="#experience"]:hover {
+            background-color: var(--accent-color);
+            color: #fff;
+            box-shadow: 0 20px 48px rgba(37, 99, 235, 0.32);
+        }
+
+        /* Petits blocs de skills */
+        #skills .bg-secondary {
+            background: radial-gradient(circle at top left, var(--accent-soft), transparent 60%),
+            var(--bg-secondary);
+            border-radius: 1.1rem;
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            box-shadow: 0 14px 32px rgba(15, 23, 42, 0.12);
+        }
+
+        .dark #skills .bg-secondary {
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
+        }
+
+        /* Contact cards */
+        #contact .bg-secondary {
+            border-radius: 0.9rem;
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.16);
+        }
+
+        /* Footer */
+        footer {
+            background: radial-gradient(circle at top, rgba(15,23,42,0.05), transparent),
+            var(--bg-primary);
+            border-top: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .dark footer {
+            background: #020617;
+            border-top-color: rgba(30, 64, 175, 0.7);
+        }
+        /* Contact Buttons – FIX */
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8fafc; /* gris très clair */
+            color: #0f172a;       /* slate-900 */
+            border-radius: 1rem;
+            border: 1px solid rgba(148,163,184,0.25);
+            padding: 1rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 20px rgba(15,23,42,0.08);
+        }
+
+        .contact-btn:hover {
+            background: var(--accent-color);
+            color: #fff !important;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 32px rgba(37,99,235,0.3);
+        }
+
+        /* Icon couleur */
+        .contact-btn i {
+            color: var(--accent-color);
+            transition: color 0.25s ease;
+        }
+
+        /* Hover => icône blanche */
+        .contact-btn:hover i {
+            color: #fff;
+        }
+
+        /* Dark Mode */
+        .dark .contact-btn {
+            background: #1e293b;
+            color: #e5e7eb;
+            border-color: rgba(148,163,184,0.35);
+        }
+
+        .dark .contact-btn:hover {
+            background: var(--accent-color);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 12px 32px rgba(76, 138, 239, 0.3);
+        }
+
+        .dark .contact-btn i {
+            color: #4c8aef;
+        }
+
+        .dark .contact-btn:hover i {
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body class="selection:bg-accent selection:text-white">
+
+<!-- 1. Navigation Header -->
+<nav id="navbar" class="fixed top-0 left-0 w-full z-50 header-bg transition-colors duration-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <a href="#hero" class="text-xl font-bold text-accent tracking-wider hover:opacity-80 transition duration-300">BAPTISTE TELLIER</a>
+
+            <div class="flex items-center space-x-4">
+                <!-- Desktop Links -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#about" class="nav-link text-sm font-medium">About</a>
+                    <a href="#education" class="nav-link text-sm font-medium">Education</a>
+                    <a href="#experience" class="nav-link text-sm font-medium">Experience</a>
+                    <a href="#skills" class="nav-link text-sm font-medium">Skills</a>
+                    <a href="#contact" class="nav-link text-sm font-medium">Contact</a>
+                </div>
+
+                <!-- Dark Mode Toggle -->
+                <button id="theme-toggle" class="p-2 rounded-full text-text-color hover:text-accent transition duration-200" title="Toggle Dark/Light Mode">
+                    <i data-lucide="sun" id="sun-icon" class="h-5 w-5 block dark:hidden"></i>
+                    <i data-lucide="moon" id="moon-icon" class="h-5 w-5 hidden dark:block"></i>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-button" type="button" class="md:hidden p-2 rounded-md text-text-color hover:bg-gray-200 dark:hover:bg-gray-700" aria-controls="mobile-menu" aria-expanded="false">
+                    <i data-lucide="menu" class="h-6 w-6"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="md:hidden hidden bg-primary" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200 dark:border-gray-700">
+            <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition">About</a>
+            <a href="#education" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition">Education</a>
+            <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition">Experience</a>
+            <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition">Skills</a>
+            <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition">Contact</a>
+        </div>
+    </div>
+</nav>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- 2. Hero Section / About Me -->
+    <section id="hero" class="min-h-screen flex items-center justify-center pt-20">
+        <div id="about" class="grid md:grid-cols-3 gap-12 items-center bg-primary p-8 md:p-16 rounded-3xl shadow-2xl w-full">
+
+            <div class="col-span-3 md:col-span-1 flex flex-col items-center">
+                <!-- Placeholder for Photo -->
+                <div class="w-48 h-48 md:w-64 md:h-64 bg-gray-300 dark:bg-gray-700 rounded-full overflow-hidden shadow-xl border-4 border-accent p-1 flex items-center justify-center">
+                    <!-- Replace this URL with your professional photo -->
+                    <img src="../fichier/ba.jpg"
+                         alt="Profile Picture Placeholder"
+                         class="w-full h-full object-cover rounded-full">
+                </div>
+                <h2 class="text-3xl font-extrabold mt-6 text-accent">Baptiste Tellier</h2>
+                <p class="text-lg font-medium text-gray-500 dark:text-gray-400">Software Engineering Student</p>
+                <p class="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
+                    <i data-lucide="map-pin" class="inline w-4 h-4 mr-1"></i> 59159 Marcoing, France
+                </p>
+            </div>
+
+            <div class="col-span-3 md:col-span-2 space-y-6">
+                <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">
+                    Fullstack Developer & <span class="text-accent">Future Engineer</span>
+                </h1>
+                <p class="text-xl leading-relaxed">
+                    A 22-year-old computer science enthusiast currently pursuing an Engineering Master's Degree (Work-Study) at INSA Hauts-de-France.
+                </p>
+                <!--                <p class="text-lg leading-relaxed">-->
+                <!--                    My goal is to secure a 3-month international mobility internship starting May 2026** to complete my degree, leveraging my robust background in web technologies, backend frameworks (Java/Spring Boot, PHP), and Python data processing.-->
+                <!--                </p>-->
+
+                <div class="pt-4 flex flex-wrap gap-4">
+                    <a href="#contact" class="flex items-center text-accent border border-accent font-bold py-3 px-6 rounded-lg hover:bg-accent hover:text-white transition duration-300 shadow-md">
+                        <i data-lucide="mail" class="w-5 h-5 mr-2"></i> Contact Me
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Education Section -->
+    <section id="education" class="pt-20">
+        <h2 class="text-4xl font-bold text-center mb-12 text-accent">EDUCATION</h2>
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+
+            <!-- Degree 1 -->
+            <div class="card p-6 rounded-xl shadow-lg border-t-4 border-accent">
+                <p class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">2024 - Present</p>
+                <h3 class="text-2xl font-semibold mb-2 text-accent">Engineering Master's Degree (CS)</h3>
+                <p class="text-gray-700 dark:text-gray-300">INSA Hauts-de-France, Famars</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Specialization: Work-Study Program</p>
+            </div>
+
+            <!-- Degree 2 -->
+            <div class="card p-6 rounded-xl shadow-lg border-t-4 border-accent">
+                <p class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">2021 - 2024</p>
+                <h3 class="text-2xl font-semibold mb-2 text-accent">Bachelor of Technology (CS)</h3>
+                <p class="text-gray-700 dark:text-gray-300">UPHF, Maubeuge, France</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Strong foundational knowledge in IT</p>
+            </div>
+
+            <!-- Degree 3 -->
+            <div class="card p-6 rounded-xl shadow-lg border-t-4 border-accent">
+                <p class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">2020 - 2021</p>
+                <h3 class="text-2xl font-semibold mb-2 text-accent">General Baccalaureate</h3>
+                <p class="text-gray-700 dark:text-gray-300">High School Paul Duez, Cambrai, France</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Science major</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Experience Section -->
+    <section id="experience" class="pt-20">
+        <h2 class="text-4xl font-bold text-center mb-12 text-accent">WORK EXPERIENCE</h2>
+        <div class="max-w-4xl mx-auto space-y-10">
+
+            <!-- Experience 1 (Apprenticeship) -->
+            <div class="card p-8 rounded-xl shadow-lg border-l-8 border-accent">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-2xl font-bold text-accent">Engineering Apprentice</h3>
+                    <span class="text-sm font-semibold text-gray-500 dark:text-gray-400">Sept 2024 - Present</span>
+                </div>
+                <p class="text-lg font-medium mb-4 text-gray-700 dark:text-gray-300">MLOG Denain</p>
+                <ul class="list-none space-y-2 text-gray-700 dark:text-gray-300">
+                    <li class="flex items-start">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-accent flex-shrink-0 mr-2 mt-1"></i>
+                        Developed internal web tools using PHP and Progress L4G (MVC architecture).
+                    </li>
+                    <li class="flex items-start">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-accent flex-shrink-0 mr-2 mt-1"></i>
+                        Applied Agile (Scrum) methodology for project management.
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Experience 2 (Internship BUT 3) -->
+            <div class="card p-8 rounded-xl shadow-lg border-l-8 border-accent">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-2xl font-bold text-accent">Python/API Developer Intern</h3>
+                    <span class="text-sm font-semibold text-gray-500 dark:text-gray-400">Apr 2024 - Jun 2024</span>
+                </div>
+                <p class="text-lg font-medium mb-4 text-gray-700 dark:text-gray-300">Nolej Tourcoing</p>
+                <ul class="list-none space-y-2 text-gray-700 dark:text-gray-300">
+                    <li class="flex items-start">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-accent flex-shrink-0 mr-2 mt-1"></i>
+                        Developed Python scripts for eBook data processing (using Ebooklib).
+                    </li>
+                    <li class="flex items-start">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-accent flex-shrink-0 mr-2 mt-1"></i>
+                        Integrated GraphQL APIs and optimized data workflows on AWS.
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Experience 3 (Internship BUT 3) -->
+            <div class="card p-8 rounded-xl shadow-lg border-l-8 border-accent">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-2xl font-bold text-accent">Fullstack Developer Intern</h3>
+                    <span class="text-sm font-semibold text-gray-500 dark:text-gray-400">Mar 2024 - Jun 2024</span>
+                </div>
+                <p class="text-lg font-medium mb-4 text-gray-700 dark:text-gray-300">Efficience Maubeuge</p>
+                <ul class="list-none space-y-2 text-gray-700 dark:text-gray-300">
+                    <li class="flex items-start">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-accent flex-shrink-0 mr-2 mt-1"></i>
+                        Designed and implemented secure web applications using Java, Spring Boot, and Spring Security.
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. Skills Section -->
+    <section id="skills" class="pt-20">
+        <h2 class="text-4xl font-bold text-center mb-12 text-accent">KEY SKILLS</h2>
+
+        <div class="max-w-6xl mx-auto bg-primary p-10 rounded-xl shadow-2xl space-y-10">
+
+            <!-- Bloc 1 : Technical Skills -->
+            <div>
+                <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-6 text-center">
+
+                    <!-- Programming Languages -->
+                    <div class="p-4 rounded-lg bg-secondary dark:bg-gray-800 transition transform hover:scale-[1.05]">
+                        <i data-lucide="code-2" class="w-8 h-8 mx-auto mb-2 text-accent"></i>
+                        <h4 class="font-bold text-lg mb-1">Programming</h4>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-400">
+                            Java, C++, Python, PHP, Progress L4G
+                        </p>
+                    </div>
+
+                    <!-- Web & Frameworks -->
+                    <div class="p-4 rounded-lg bg-secondary dark:bg-gray-800 transition transform hover:scale-[1.05]">
+                        <i data-lucide="layout-template" class="w-8 h-8 mx-auto mb-2 text-accent"></i>
+                        <h4 class="font-bold text-lg mb-1">Web & Frameworks</h4>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-400">
+                            HTML, CSS, JavaScript, Vue.js, React.js, Spring Boot
+                        </p>
+                    </div>
+
+                    <!-- Databases -->
+                    <div class="p-4 rounded-lg bg-secondary dark:bg-gray-800 transition transform hover:scale-[1.05]">
+                        <i data-lucide="database" class="w-8 h-8 mx-auto mb-2 text-accent"></i>
+                        <h4 class="font-bold text-lg mb-1">Databases</h4>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-400">
+                            SQL, NoSQL
+                        </p>
+                    </div>
+
+                    <!-- Cloud & Deployment -->
+                    <div class="p-4 rounded-lg bg-secondary dark:bg-gray-800 transition transform hover:scale-[1.05]">
+                        <i data-lucide="cloud" class="w-8 h-8 mx-auto mb-2 text-accent"></i>
+                        <h4 class="font-bold text-lg mb-1">Cloud & Deployment</h4>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-400">
+                            AWS, Application deployment
+                        </p>
+                    </div>
+
+                    <!-- Networking -->
+                    <div class="p-4 rounded-lg bg-secondary dark:bg-gray-800 transition transform hover:scale-[1.05]">
+                        <i data-lucide="router" class="w-8 h-8 mx-auto mb-2 text-accent"></i>
+                        <h4 class="font-bold text-lg mb-1">Networking</h4>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-400">
+                            Cisco Packet Tracer – basic network concepts
+                        </p>
+                    </div>
+
+                    <!-- Methods & Practices -->
+                    <div class="p-4 rounded-lg bg-secondary dark:bg-gray-800 transition transform hover:scale-[1.05]">
+                        <i data-lucide="workflow" class="w-8 h-8 mx-auto mb-2 text-accent"></i>
+                        <h4 class="font-bold text-lg mb-1">Methods & Practices</h4>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-400">
+                            Agile / Scrum, MVC architecture, Secure web development
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Bloc 2 : Soft Skills & Languages -->
+            <div class="grid md:grid-cols-2 gap-6">
+
+                <!-- Soft Skills -->
+                <div class="p-6 rounded-lg bg-secondary dark:bg-gray-800 text-center flex flex-col justify-center">
+                    <i data-lucide="users" class="w-8 h-8 mx-auto mb-2 text-accent"></i>
+                    <h3 class="font-bold text-lg mb-2">Soft Skills</h3>
+                    <p class="text-sm text-gray-700 dark:text-gray-300">
+                        Team spirit • Autonomy • Organization• Versatile <br>
+                        Seriousness & Dynamism • Adaptability • Responsibility
+                    </p>
+                </div>
+
+<!--                &lt;!&ndash; Work Environment &ndash;&gt;-->
+<!--                <div class="p-6 rounded-lg bg-secondary dark:bg-gray-800 text-center flex flex-col justify-center">-->
+<!--                    <i data-lucide="briefcase" class="w-8 h-8 mx-auto mb-2 text-accent"></i>-->
+<!--                    <h3 class="font-bold text-lg mb-2">Work Environment</h3>-->
+<!--                    <p class="text-sm text-gray-700 dark:text-gray-300">-->
+<!--                        Work-study engineering program • Industrial environment<br>-->
+<!--                        Collaboration with cross-functional teams-->
+<!--                    </p>-->
+<!--                </div>-->
+
+                <!-- Languages -->
+                <div class="p-6 rounded-lg bg-secondary dark:bg-gray-800 text-center flex flex-col justify-center">
+                    <i data-lucide="languages" class="w-8 h-8 mx-auto mb-2 text-accent"></i>
+                    <h3 class="font-bold text-lg mb-2">Languages</h3>
+                    <p class="text-sm text-gray-700 dark:text-gray-300">
+                        French: Native<br>
+                        English: TOEIC 635 (March 2025)
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- 6. Contact Section -->
+    <section id="contact" class="pt-20">
+        <h2 class="text-4xl font-bold text-center mb-12 text-accent">CONTACT ME</h2>
+        <div class="max-w-xl mx-auto bg-primary p-8 rounded-xl shadow-2xl">
+            <p class="text-center text-lg mb-6 text-gray-700 dark:text-gray-300">
+                I'm looking forward to discussing any potential development opportunities.
+            </p>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <a href="mailto:baptistet21@gmail.com" class="contact-btn">
+                    <i data-lucide="send" class="w-5 h-5 mr-3"></i>
+                    <span>baptistet21@gmail.com</span>
+                </a>
+                <a href="tel:+33624512963" class="contact-btn">
+                    <i data-lucide="phone" class="w-5 h-5 mr-3"></i>
+                    <span>+33 6 24 51 29 63</span>
+                </a>
+                <a href="https://www.linkedin.com/in/baptiste-tellier-150916237/" target="_blank" rel="noopener noreferrer" class="contact-btn">
+                    <i data-lucide="linkedin" class="w-5 h-5 mr-3"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://versatech-dev.fr/" target="_blank" rel="noopener noreferrer" class="contact-btn">
+                    <i data-lucide="globe" class="w-5 h-5 mr-3"></i>
+                    <span>Versatech</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="bg-primary border-t border-gray-200 dark:border-gray-700 py-6 mt-16">
+    <div class="max-w-7xl mx-auto text-center text-gray-500 dark:text-gray-400 text-sm">
+        &copy; 2025 Baptiste Tellier. All rights reserved. Built with Tailwind CSS.
+    </div>
+</footer>
+
+<script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    const menuButton = document.getElementById('menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    const navLinks = document.querySelectorAll('.nav-link, #mobile-menu a');
+    const sections = document.querySelectorAll('section');
+
+    // 1. Mobile Menu Toggle
+    menuButton.addEventListener('click', function() {
+        const isExpanded = this.getAttribute('aria-expanded') === 'true' || false;
+        this.setAttribute('aria-expanded', !isExpanded);
+        mobileMenu.classList.toggle('hidden');
+        lucide.replaceIcons(); // Re-render icon if needed
+    });
+
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            menuButton.setAttribute('aria-expanded', 'false');
+        });
+    });
+
+    // 2. Dark Mode Toggle (Interactive Feature)
+    function checkTheme() {
+        // Check local storage or prefer system setting
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+    }
+
+    themeToggle.addEventListener('click', () => {
+        if (html.classList.contains('dark')) {
+            html.classList.remove('dark');
+            localStorage.theme = 'light';
+        } else {
+            html.classList.add('dark');
+            localStorage.theme = 'dark';
+        }
+        lucide.replaceIcons(); // Ensure icons update after theme change
+    });
+
+    // Initial theme check on load
+    checkTheme();
+
+
+    // 3. Navigation Highlight (Scroll Spy)
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5 // Adjust threshold as needed
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            const id = entry.target.getAttribute('id');
+            const navLink = document.querySelector(`.nav-link[href="#${id}"]`);
+
+            // Clear all active states
+            navLinks.forEach(link => link.classList.remove('active', 'text-accent'));
+
+            if (entry.isIntersecting) {
+                // Set the current section's link as active
+                if (navLink) {
+                    navLink.classList.add('active', 'text-accent');
+                }
+            } else {
+                // If moving away, only remove active state if scrolling down past it
+                if (navLink && !navLink.classList.contains('active')) {
+                    navLink.classList.remove('active', 'text-accent');
+                }
+            }
+        });
+    }, observerOptions);
+
+    // Observe each section starting from 'about'
+    sections.forEach(section => {
+        if (section.id && section.id !== 'hero') { // Skip hero section for observation, start with "about"
+            observer.observe(section);
+        }
+    });
+
+    // Manually handle the "About" link for the Hero section
+    const heroObserver = new IntersectionObserver(([entry]) => {
+        const aboutLink = document.querySelector(`.nav-link[href="#about"]`);
+        // Remove 'active' from all other links
+        navLinks.forEach(link => link.classList.remove('active', 'text-accent'));
+
+        if (entry.isIntersecting) {
+            aboutLink?.classList.add('active', 'text-accent');
+        } else {
+            aboutLink?.classList.remove('active', 'text-accent');
+        }
+    }, { threshold: 0.1 });
+
+    heroObserver.observe(document.getElementById('hero'));
+</script>
+
+</body>
+</html>
