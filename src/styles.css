@@ -2038,3 +2038,88 @@ button { font: inherit; }
     gap: 24px;
   }
 }
+
+/* About section responsive fix — keep this after the component-specific rules */
+@media (max-width: 1080px) {
+  .about-grid-clean {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+  }
+
+  .about-copy-wide {
+    max-width: none;
+  }
+
+  .about-now {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 680px) {
+  .about-grid-clean {
+    gap: 22px;
+  }
+
+  .about-copy p {
+    margin-bottom: 18px;
+    font-size: .96rem;
+    line-height: 1.72;
+  }
+
+  .about-now {
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .about-now-list {
+    gap: 9px;
+    margin-top: 18px;
+  }
+
+  .about-now-item {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 12px;
+    padding: 14px;
+    border-radius: 15px;
+  }
+
+  .about-now-item > span {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+
+  .about-now-item strong {
+    display: block;
+    font-size: .92rem;
+    line-height: 1.3;
+  }
+
+  .about-now-item p {
+    font-size: .78rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 380px) {
+  .about-now {
+    padding: 15px;
+  }
+
+  .about-now-item {
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .about-now-item > span {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.about-grid-clean > *,
+.about-now-item > div {
+  min-width: 0;
+}
