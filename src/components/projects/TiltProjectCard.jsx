@@ -2,7 +2,11 @@ import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } fro
 import { ArrowUpRight } from 'lucide-react'
 import ProjectMockup from './ProjectMockup.jsx'
 
-export default function TiltProjectCard({ project, index }) {
+export default function TiltProjectCard({ project, index, linkLabel = 'Voir le projet' }) {
+  const hasLink = Boolean(project.url)
+  const isExternal = hasLink && /^https?:\/\//.test(project.url)
+  const linkProps = isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {}
+
   const reduceMotion = useReducedMotion()
   const x = useMotionValue(0)
   const y = useMotionValue(0)
@@ -23,13 +27,27 @@ export default function TiltProjectCard({ project, index }) {
 
   return (
     <motion.article
-      className={`project-os-card project-${project.gradient} ${project.featured ? 'project-featured' : ''}`}
+      className={`project-os-card project-${project.gradient} ${project.featured ? 'project-featured' : ''} ${hasLink ? 'project-has-link' : ''}`}
       style={reduceMotion ? undefined : { rotateX, rotateY }}
       onPointerMove={onPointerMove}
       onPointerLeave={reset}
       whileHover={reduceMotion ? undefined : { y: -9 }}
     >
-      <div className="project-os-topline"><span>{project.index}</span><ArrowUpRight size={22} /></div>
+      <div className="project-os-topline">
+        <span>{project.index}</span>
+        {hasLink ? (
+          <a
+            className="project-os-link"
+            href={project.url}
+            aria-label={`${linkLabel} : ${project.name}`}
+            {...linkProps}
+          >
+            <ArrowUpRight size={22} />
+          </a>
+        ) : (
+          <ArrowUpRight size={22} aria-hidden="true" />
+        )}
+      </div>
       <div className="project-mockup-stage"><ProjectMockup index={index} /></div>
       <div className="project-os-copy">
         <p className="project-type">{project.type}</p>

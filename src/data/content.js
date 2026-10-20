@@ -2,7 +2,7 @@ export const content = {
   fr: {
     nav: {
       about: 'À propos',
-      versatech: 'VersaTech',
+      // versatech: 'VersaTech',
       experience: 'Expériences',
       projects: 'Projets',
       skills: 'Compétences',
@@ -53,10 +53,10 @@ export const content = {
           title: 'INSA FISA',
           text: 'Formation d’ingénieur en informatique en alternance à l’INSA Hauts-de-France.',
         },
-        {
-          title: 'VersaTech',
-          text: 'Cofondateur d’une agence de sites web et d’applications sur mesure depuis mai 2025.',
-        },
+        // {
+        //   title: 'VersaTech',
+        //   text: 'Cofondateur d’une agence de sites web et d’applications sur mesure depuis mai 2025.',
+        // },
       ],
     },
     versatech: {
@@ -230,6 +230,7 @@ export const content = {
     projects: {
       eyebrow: 'Projets sélectionnés',
       title: 'Mes projets',
+      linkLabel: 'Voir le projet',
       items: [
         {
           index: '01',
@@ -239,6 +240,7 @@ export const content = {
             "Développement et évolution d’applications internes répondant à des besoins opérationnels concrets : interfaces, traitements métiers, données, maintenance, correction d’anomalies, documentation et tests d’API.",
           tags: ['Progress ABL', 'PHP', 'SQL', 'Swagger', 'Agile'],
           gradient: 'green',
+          url: '', // ex : 'https://github.com/...' ou 'https://mon-projet.fr'
           featured: true,
         },
         {
@@ -249,6 +251,7 @@ export const content = {
             "Plateforme de gestion pour centraliser les projets de construction, les bordereaux de quantités, les utilisateurs, les rôles et les opérations terrain. Le projet est pensé comme une application complète, responsive, sécurisée et déployable avec Docker.",
           tags: ['React', 'FastAPI', 'Docker', 'PostgreSQL', 'PWA'],
           gradient: 'violet',
+          url: '', // ex : 'https://github.com/...' ou 'https://mon-projet.fr'
         },
         {
           index: '03',
@@ -258,6 +261,7 @@ export const content = {
             "Application destinée aux sages-femmes pour enregistrer et organiser les naissances accompagnées. Elle intègre l’authentification, la gestion des relations entre bébés, la sécurité des données, le RGPD et une réflexion autour du fonctionnement hors ligne.",
           tags: ['React', 'Spring Boot', 'Spring Security', 'REST API', 'Docker'],
           gradient: 'cyan',
+          url: 'https://au-creux-des-mains.web.app', // ex : 'https://github.com/...' ou 'https://mon-projet.fr'
         },
       ],
     },
@@ -346,7 +350,7 @@ export const content = {
   en: {
     nav: {
       about: 'About',
-      versatech: 'VersaTech',
+      // versatech: 'VersaTech',
       experience: 'Experience',
       projects: 'Projects',
       skills: 'Skills',
@@ -397,10 +401,10 @@ export const content = {
           title: 'INSA FISA',
           text: 'Work-study computer engineering degree at INSA Hauts-de-France.',
         },
-        {
-          title: 'VersaTech',
-          text: 'Co-founder of a custom website and application agency since May 2025.',
-        },
+        // {
+        //   title: 'VersaTech',
+        //   text: 'Co-founder of a custom website and application agency since May 2025.',
+        // },
       ],
     },
     versatech: {
@@ -573,6 +577,7 @@ export const content = {
     projects: {
       eyebrow: 'Selected projects',
       title: 'My projects',
+      linkLabel: 'View project',
       items: [
         {
           index: '01',
@@ -582,6 +587,7 @@ export const content = {
             'Development and evolution of internal applications addressing concrete operational needs: interfaces, business processing, data, maintenance, bug fixing, documentation and API testing.',
           tags: ['Progress ABL', 'PHP', 'SQL', 'Swagger', 'Agile'],
           gradient: 'green',
+          url: '', // ex : 'https://github.com/...' ou 'https://mon-projet.fr'
           featured: true,
         },
         {
@@ -592,6 +598,7 @@ export const content = {
             'A management platform centralizing construction projects, bills of quantities, users, roles and field operations. The project is designed as a complete, responsive, secure application that can be deployed with Docker.',
           tags: ['React', 'FastAPI', 'Docker', 'PostgreSQL', 'PWA'],
           gradient: 'violet',
+          url: '', // ex : 'https://github.com/...' ou 'https://mon-projet.fr'
         },
         {
           index: '03',
@@ -601,6 +608,7 @@ export const content = {
             'An application for midwives to record and organize the births they have attended. It includes authentication, relationships between babies, data security, GDPR considerations and offline use planning.',
           tags: ['React', 'Spring Boot', 'Spring Security', 'REST API', 'Docker'],
           gradient: 'cyan',
+          url: '', // ex : 'https://github.com/...' ou 'https://mon-projet.fr'
         },
       ],
     },

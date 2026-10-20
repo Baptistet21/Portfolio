@@ -9,7 +9,7 @@ export default function Projects({ t }) {
       <div className="projects-os-grid">
         {t.projects.items.map((project, index) => (
           <Reveal key={project.name} delay={index * 0.08}>
-            <TiltProjectCard project={project} index={index} />
+            <TiltProjectCard project={project} index={index} linkLabel={t.projects.linkLabel} />
           </Reveal>
         ))}
       </div>

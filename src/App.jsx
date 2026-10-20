@@ -46,7 +46,7 @@ export default function App() {
       <main>
         <Hero t={t} theme={theme} />
         <About t={t} />
-        <VersaTech t={t} />
+        {/*<VersaTech t={t} />*/}
         <Experience t={t} />
         <Projects t={t} />
         <Skills t={t} />

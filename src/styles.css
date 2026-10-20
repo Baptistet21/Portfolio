@@ -2123,3 +2123,25 @@ button { font: inherit; }
 .about-now-item > div {
   min-width: 0;
 }
+
+/* Lien sur les cards projets */
+.project-os-link {
+  position: static;
+  display: inline-flex;
+  color: inherit;
+  border-radius: 8px;
+  transition: color .2s ease, transform .2s ease;
+}
+/* Rend toute la card cliquable via le lien de la flèche */
+.project-os-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: 29px;
+}
+/* La topline doit être statique pour que la zone cliquable couvre toute la card */
+.project-has-link .project-os-topline { position: static; }
+.project-has-link { cursor: pointer; }
+.project-has-link:hover .project-os-link { color: var(--text, #fff); transform: translate(2px, -2px); }
+.project-os-link:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
