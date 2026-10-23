@@ -2126,22 +2126,19 @@ button { font: inherit; }
 
 /* Lien sur les cards projets */
 .project-os-link {
-  position: static;
-  display: inline-flex;
-  color: inherit;
-  border-radius: 8px;
-  transition: color .2s ease, transform .2s ease;
-}
-/* Rend toute la card cliquable via le lien de la flèche */
-.project-os-link::after {
-  content: '';
   position: absolute;
   inset: 0;
-  z-index: 3;
+  z-index: 4;
+  display: block;
+  color: inherit;
   border-radius: 29px;
+  transition: color .2s ease, transform .2s ease;
 }
-/* La topline doit être statique pour que la zone cliquable couvre toute la card */
-.project-has-link .project-os-topline { position: static; }
+.project-os-link svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 .project-has-link { cursor: pointer; }
-.project-has-link:hover .project-os-link { color: var(--text, #fff); transform: translate(2px, -2px); }
+.project-has-link:hover .project-os-link svg { color: var(--text, #fff); transform: translate(2px, -2px); }
 .project-os-link:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }

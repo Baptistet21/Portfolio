@@ -96,7 +96,7 @@ export const content = {
       mlogCodeTitle: 'Ma façon de travailler',
       mlogSkillGroups: [
         { title: 'Développement', items: 'Progress OpenEdge ABL · PHP' },
-        { title: 'Données & API', items: 'SQL · Swagger / OpenAPI' },
+        { title: 'Données & API', items: 'JSON · Swagger / OpenAPI' },
         { title: 'Qualité', items: 'Maintenance · Débogage · Tests' },
         { title: 'Méthode', items: 'Analyse métier · Agile / Scrum' },
       ],
@@ -181,10 +181,10 @@ export const content = {
             "Analyse des besoins métiers et traduction de demandes opérationnelles en solutions techniques.",
             "Maintenance corrective, résolution d’anomalies et amélioration continue des applications existantes.",
             "Conception, documentation et tests d’API avec Swagger / OpenAPI.",
-            "Manipulation de données SQL et intégration de traitements adaptés aux processus internes.",
+            "Manipulation de données JSON et intégration de traitements adaptés aux processus internes.",
             "Collaboration avec l’équipe de développement selon une organisation Agile / Scrum.",
           ],
-          tags: ['Progress OpenEdge ABL', 'PHP', 'SQL', 'Swagger / OpenAPI', 'Agile', 'Applications métiers'],
+          tags: ['Progress OpenEdge ABL', 'PHP', 'JSON', 'Swagger / OpenAPI', 'Agile', 'Applications métiers'],
         },
         {
           period: '04/05/2026 — 25/07/2026',
@@ -255,7 +255,7 @@ export const content = {
         },
         {
           index: '03',
-          name: 'BirthBook',
+          name: 'Au Creux des mains',
           type: 'Application web · Santé',
           description:
             "Application destinée aux sages-femmes pour enregistrer et organiser les naissances accompagnées. Elle intègre l’authentification, la gestion des relations entre bébés, la sécurité des données, le RGPD et une réflexion autour du fonctionnement hors ligne.",
@@ -444,7 +444,7 @@ export const content = {
       mlogCodeTitle: 'How I work',
       mlogSkillGroups: [
         { title: 'Development', items: 'Progress OpenEdge ABL · PHP' },
-        { title: 'Data & APIs', items: 'SQL · Swagger / OpenAPI' },
+        { title: 'Data & APIs', items: 'JSON · Swagger / OpenAPI' },
         { title: 'Quality', items: 'Maintenance · Debugging · Tests' },
         { title: 'Method', items: 'Business analysis · Agile / Scrum' },
       ],
@@ -511,7 +511,7 @@ export const content = {
           objective: 'Keep existing applications reliable',
           tools: 'Debugging · tests · Agile / Scrum',
           result: 'A validated, usable correction',
-          code: '✓ reproduce the issue\n✓ identify the cause\n✓ correct the processing\n✓ verify the SQL data\n✓ test the API in Swagger\n✓ obtain user validation',
+          code: '✓ reproduce the issue\n✓ identify the cause\n✓ correct the processing\n✓ verify the JSON data\n✓ test the API in Swagger\n✓ obtain user validation',
           explanation: 'I handle bugs and change requests, then test the correction before it is validated by the users.',
         },
       ],
@@ -529,10 +529,10 @@ export const content = {
             'Analysis of business requirements and translation of operational requests into technical solutions.',
             'Corrective maintenance, bug resolution and continuous improvement of existing applications.',
             'API design, documentation and testing with Swagger / OpenAPI.',
-            'SQL data handling and implementation of processing aligned with internal workflows.',
+            'JSON data handling and implementation of processing aligned with internal workflows.',
             'Collaboration with the development team using Agile / Scrum practices.',
           ],
-          tags: ['Progress OpenEdge ABL', 'PHP', 'SQL', 'Swagger / OpenAPI', 'Agile', 'Business applications'],
+          tags: ['Progress OpenEdge ABL', 'PHP', 'JSON', 'Swagger / OpenAPI', 'Agile', 'Business applications'],
         },
         {
           period: '04/05/2026 — 25/07/2026',
@@ -585,7 +585,7 @@ export const content = {
           type: 'Professional applications · Industry',
           description:
             'Development and evolution of internal applications addressing concrete operational needs: interfaces, business processing, data, maintenance, bug fixing, documentation and API testing.',
-          tags: ['Progress ABL', 'PHP', 'SQL', 'Swagger', 'Agile'],
+          tags: ['Progress ABL', 'PHP', 'JSON', 'Swagger', 'Agile'],
           gradient: 'green',
           url: '', // ex : 'https://github.com/...' ou 'https://mon-projet.fr'
           featured: true,
@@ -602,13 +602,13 @@ export const content = {
         },
         {
           index: '03',
-          name: 'BirthBook',
+          name: 'Au Creux des mains',
           type: 'Web application · Healthcare',
           description:
             'An application for midwives to record and organize the births they have attended. It includes authentication, relationships between babies, data security, GDPR considerations and offline use planning.',
           tags: ['React', 'Spring Boot', 'Spring Security', 'REST API', 'Docker'],
           gradient: 'cyan',
-          url: '', // ex : 'https://github.com/...' ou 'https://mon-projet.fr'
+          url: 'https://au-creux-des-mains.web.app', // ex : 'https://github.com/...' ou 'https://mon-projet.fr'
         },
       ],
     },
