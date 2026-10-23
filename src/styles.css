@@ -2134,10 +2134,16 @@ button { font: inherit; }
   border-radius: 29px;
   transition: color .2s ease, transform .2s ease;
 }
+/* Le lien doit couvrir toute la carte : son bloc conteneur est la carte, pas la topline */
+.project-has-link .project-os-topline { position: static; }
+.project-os-link { transform: translateZ(40px); } /* devant .project-os-copy (translateZ 16px) en 3D */
 .project-os-link svg {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 22px;
+  right: 22px;
+}
+@media (max-width: 760px) {
+  .project-os-link svg { top: 20px; right: 20px; }
 }
 .project-has-link { cursor: pointer; }
 .project-has-link:hover .project-os-link svg { color: var(--text, #fff); transform: translate(2px, -2px); }
